@@ -1,3 +1,5 @@
+import TourData from "../model/tour.schema";
+
 //controller 
 const controller = {};
 
