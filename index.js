@@ -1,5 +1,6 @@
 const express = require("express");
-const cors = require('cors')
+const cors = require('cors');
+const connection = require("./utils/connection");
 require('dotenv').config()
 const app = express()
 
@@ -9,6 +10,12 @@ const port = process.env.PORT || 5000;
 // middleware
 app.use(cors())
 app.use(express.json())
+
+
+//connection
+connection()
+
+// app.use('api/v1', routes)
 
 
 app.get('/', (req, res)=>{
