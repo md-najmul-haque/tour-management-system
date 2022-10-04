@@ -1,10 +1,10 @@
-const { application } = require("express");
 const express = require("express");
+const { getTourData } = require("../controllers/tour.controller");
 
 
 //module scaffolding
 const tourRoutes = express.Router()
 
-tourRoutes.route('/tours', getToursData )
+tourRoutes.route('/tours', getTourData )
 
 module.exports=tourRoutes; 
