@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require('cors');
 const connection = require("./utils/connection");
+const tourRoutes = require("./routes/toure.routes");
 require('dotenv').config()
 const app = express()
 
@@ -15,7 +16,7 @@ app.use(express.json())
 //connection
 connection()
 
-// app.use('api/v1', routes)
+app.use('api/v1', tourRoutes)
 
 
 app.get('/', (req, res)=>{
