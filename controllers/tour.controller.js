@@ -1,9 +1,7 @@
 const { getAllTourServices } = require('../services/tour.services');
 
-//controller 
-// const controller = {};
 
-//get random user
+//get all tour
 exports.getAllTour = async (req, res, next) => {
     try {
         let filters = { ...req.query }
@@ -46,5 +44,23 @@ exports.getAllTour = async (req, res, next) => {
     }
 }
 
-//export controller 
-// module.exports = controller;
+
+
+exports.createTour = async (req, res, next) => {
+    try {
+        const result = await createTourService(req.body);
+        res.status(200).json({
+            stauts: "success",
+            massage: "Data inside successfully",
+            data: result
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Data is not inserted",
+            error: error.message
+        })
+    }
+}
+
