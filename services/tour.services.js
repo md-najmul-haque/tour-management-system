@@ -28,3 +28,13 @@ exports.updateToureService = async (tourId, data) => {
     const result = await Tours.updateOne({ _id: tourId }, { $set: data }, { runValidators: true })
     return result;
 }
+
+exports.trendingTourService = async () => {
+    const result = await Tours.find({})
+    return result;
+}
+
+exports.cheapestTourService = async () => {
+    const result = await Tours.find({packagePrice: {$lt: 3000}})
+    return result;
+}

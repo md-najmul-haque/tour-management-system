@@ -126,4 +126,21 @@ exports.trendingTour = async (req, res, next) => {
     }
 }
 
+exports.cheapestTour = async (req, res, next) => {
+    try {
+        const result = await cheapestTourService();
+        res.status(200).json({
+            stauts: "success",
+            massage: "Getting A cheapest Tour Successfully",
+            data: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "cheapestTour Data is not find",
+            error: error.message
+        })
+    }
+}
+
 
