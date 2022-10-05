@@ -1,41 +1,42 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export const tourSchema = mongoose.Schema(
-  {
-    id: String,
-    name: {
-      type: String,
-      required: true,
-      min: 5,
-      max: 100,
-    },
-    email: {
-      type: String,
-      required: true,
-      trim: true,
-      unique: true,
-      lowercase: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-      trim: true,
-    },
-    package: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    image: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    views: Number,
+const tourSchema = mongoose.Schema({
+  id: String,
+  packageName: {
+    type: String,
+    required: [true, "Please provide a packageName for tour"],
+    trim: true,
+    unique: true,
+    minLength: [3, "packageName mast be 3 characters"],
+    maxLength: [100, "packageName is too larges"],
   },
+  packageType: {
+    type: String,
+    required: true,
+    enum: {
+      values: ["premium-package", "business-class", "normal-package"],
+      massage: "packageType value can't be {VALUE},must be premium-package/business-class/normal-package",
+    }
+  },
+  packageLocation: {
+    type: String,
+    required: true,
+    minLength: [3, "packageName mast be 3 characters"],
+    maxLength: [100, "packageName is too larges"]
+  },
+  packageDescription: {
+    type: String,
+    required: true
+  },
+  packagePrice: {
+    type: Number,
+    required: true,
+    min: [0, "packagePrice can't be negative"],
+  }
+},
   { timestamps: true }
-);
+)
+//model
+const tourData = mongoose.model('Tours', tourSchema)
 
-const tourData = mongoose.model("tour", tourSchema);
-
-export default TourData;
+module.exports = tourData;
