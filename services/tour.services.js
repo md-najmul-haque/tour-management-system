@@ -18,3 +18,8 @@ exports.createTourService = async (data) => {
     const product = await Tours.create(data);
     return product;
 }
+
+exports.getTourServicebyId= async(id)=>{
+    const tour = await Tours.findOne(id);
+    return tour;
+}

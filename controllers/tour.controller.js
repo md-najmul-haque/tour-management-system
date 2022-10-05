@@ -64,3 +64,30 @@ exports.createTour = async (req, res, next) => {
     }
 }
 
+exports.getTourById =async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        if (!mongoose.Types.ObjectId(id)) {
+            return res.status(400).json({
+                status: false,
+                message: 'Invalid Tour Info',
+                error: error.message
+            })
+        }
+        const result = await getTourServicebyId({ _id: mongoose.Types.ObjectId(id) })
+
+        res.status(200).json({
+            stauts: "success",
+            massage: "Data get successfully",
+            data: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Tour is not find by id",
+            error: error.message
+        })
+    }
+}
+
+
