@@ -1,4 +1,4 @@
-import TourData from "../model/tour.schema";
+const tourData = require('../model/tour.schema')
 
 //controller 
 const controller = {};
