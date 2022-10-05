@@ -8,5 +8,5 @@ const tourRoutes = express.Router()
 
 tourRoutes.route('/tours').get(tourController.getAllTour).post(tourController.createTour)
 tourRoutes.route('/tour/:id').get(viewCount, tourController.getTourById).patch(tourController.updateTour)
-
+tourRoutes.route('/tour/trending').get(tourController.trendingTour)
 module.exports=tourRoutes; 
