@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Tours=require('../model/tour.schema.js')
+const Tours=require('../model/tour.schema')
 
 exports.getAllTourServices=async(filters,queries)=>{
 
@@ -16,6 +16,7 @@ exports.getAllTourServices=async(filters,queries)=>{
 
 exports.createTourService = async (data) => {
     const product = await Tours.create(data);
+    console.log(product)
     return product;
 }
 

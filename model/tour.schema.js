@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 const tourSchema = mongoose.Schema({
-  id: String,
-  packageName: {
+    packageName: {
     type: String,
     required: [true, "Please provide a packageName for tour"],
     trim: true,
@@ -37,6 +36,6 @@ const tourSchema = mongoose.Schema({
   { timestamps: true }
 )
 //model
-const tourData = mongoose.model('Tours', tourSchema)
+const tourData = mongoose.model('tourData', tourSchema)
 
 module.exports = tourData;

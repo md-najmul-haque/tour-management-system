@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require('cors');
 const connection = require("./utils/connection");
-const tourRoutes = require("./routes/tour.routes");
+const tourRoutes = require("./routes/v1/tour.routes.js");
 
 require('dotenv').config()
 const app = express()
@@ -17,9 +17,10 @@ app.use(express.json())
 //connection
 connection()
 
-app.use('api/v1', tourRoutes)
+//tour API route
+app.use('/api/v1', tourRoutes)
 
-
+//base url
 app.get('/', (req, res)=>{
     res.status(200).json({
         success: true,
@@ -27,6 +28,7 @@ app.get('/', (req, res)=>{
     })
 })
 
+//create server
 app.listen(port, ()=>{
     console.log('server is listening to the port', port)
 })

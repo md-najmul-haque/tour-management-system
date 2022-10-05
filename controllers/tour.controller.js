@@ -1,5 +1,5 @@
-const { getAllTourServices } = require('../services/tour.services');
-
+const mongoose = require('mongoose')
+const { getAllTourServices, createTourService, getTourServicebyId, updateToureService, trendingTourService, cheapestTourService } = require('../services/tour.services');
 
 //get all tour
 exports.getAllTour = async (req, res, next) => {
@@ -120,7 +120,7 @@ exports.trendingTour = async (req, res, next) => {
     } catch (error) {
         res.status(400).json({
             stauts: "fail",
-            message: "cheapestTour Data is not find",
+            message: "trending tour is not find",
             error: error.message
         })
     }

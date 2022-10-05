@@ -1,14 +1,17 @@
-const connection = ()=>{
+const mongoose = require('mongoose')
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://`${process.env.DB_USER}`:`${process.env.DB_PASS}`@cluster0.hvgp9ef.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  console.log("server running form utils")
-  client.close();
-});
+const connection = async ()=>{
+  const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.hvgp9ef.mongodb.net/?retryWrites=true&w=majority`
+try {
+  await mongoose.connect(url, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  } )
+
+  console.log('db connected')
+} catch (error) {
+  console.log(error)
+}
 
 }
 
